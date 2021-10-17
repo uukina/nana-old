@@ -9,7 +9,7 @@ module.exports = async (client) => {
   const guilds = client.guilds.cache.size;
 
   console.log(
-    `${client.user.username} Preparing to playing with ${users} users, in ${channels} channels of ${guilds} guilds...`
+    `${client.user.username} Bersiap untuk bermain dengan ${users} pengguna, di ${channels} channels pada ${guilds} guilds...`
   );
 
   client.setInterval(async () => {
@@ -17,12 +17,12 @@ module.exports = async (client) => {
     let guildFormat = client.util.nFormatter(client.guilds.cache.size);
 
     let status = [
-      `with ${userFormat} users`,
+      `dengan ${userFormat} users`,
       `Bot v${version}`,
-      `in ${guildFormat} server 🎉`,
-      "Help me to buy a VPS, please | nh donate",
-      "Ara ara ara",
-      "now with downloader | nh dl 177013",
+      `di ${guildFormat} server 🎉`,
+      "Kapten, apakah kita akan berlayar?",
+      "NTR atau Vanilla?",
+      "bantu saya beli rokok | nh donate",
     ];
     let rand = client.util.getRandInt(status.length);
 

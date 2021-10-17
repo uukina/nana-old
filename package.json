@@ -1,7 +1,7 @@
 {
-  "name": "nana-bot",
-  "version": "2.10.0",
-  "description": "Search, read, and download doujin book directly from your discord channel",
+  "name": "lenanuclear-bot",
+  "version": "1.0.0",
+  "description": "Cari, baca, dan download doujin langsung dari discord",
   "main": "app.js",
   "scripts": {
     "start": "node .",

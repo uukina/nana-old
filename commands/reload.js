@@ -1,11 +1,11 @@
 exports.run = async (client, msg, args) => {
   msg.delete({ timeout: 5000 });
   if (!args || args.length < 1)
-    return msg.reply("Must provide a command name to reload.");
+    return msg.reply("Harus Menyediakan perintah untuk dimuat ulang");
   const commandName = args[0];
   // Check if the command exists and is valid
   if (!client.commands.has(commandName)) {
-    return msg.reply("That command does not exist");
+    return msg.reply("Perintah tersebut tidak tersedia");
   }
   // the path is relative to the *current folder*, so just ./filename.js
   delete require.cache[require.resolve(`./${commandName}.js`)];
@@ -14,7 +14,7 @@ exports.run = async (client, msg, args) => {
   const props = require(`./${commandName}.js`);
   client.commands.set(commandName, props);
   msg
-    .reply(`The command ${commandName} has been reloaded`)
+    .reply(`Perintah ${commandName} telah di muat ulang`)
     .then(msg => msg.delete({ timeout: 5000 }));
 };
 

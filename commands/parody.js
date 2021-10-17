@@ -4,12 +4,12 @@ let api = new nHentaiAPI();
 exports.run = async (client, msg, args, color) => {
   if (!msg.channel.nsfw)
     return msg.channel
-      .send(`NSFW channel please.`)
+      .send(`NSFW channel pliss.`)
       .then(msg => msg.delete({ timeout: 5000 }));
   if (!args[0])
     return msg.channel
       .send(
-        `the command you are using is incorrect\nExample: \`nh parody <Parody> [language]\``
+        `Perintah yang kamu gunakan salah\nCoontoh: \`dd parody <Parody> [language]\``
       )
       .then(msg => msg.delete({ timeout: 10000 }));
   let nick =
@@ -31,18 +31,18 @@ exports.run = async (client, msg, args, color) => {
   }
   if (!client.config.LANG.includes(lang.toLowerCase()))
     return msg.channel
-      .send("Available langauge is `English`, `Japanese` & `Chinese`")
+      .send("Bahasa yang tersedia adalah `English`, `Japanese` & `Chinese`")
       .then(msg => msg.delete({ timeout: 5000 }));
 
   let numPages = await api.parody(parody);
   if (!numPages.results || numPages.results.length == 0)
-    return msg.channel.send(`No doujin found with parody \`${parody}\``);
+    return msg.channel.send(`Tidak ditemukan doujin dengan parody \`${parody}\``);
   if (numPages.num_pages == 1) {
     let query = numPages.results.filter(x => x.language == lang.toLowerCase());
     if (query.length == 0)
       return msg.channel
         .send(
-          `No book found with language **${lang}**, please try using another language`
+          `Tidak ditemukan buku dengan bahasa **${lang}**, Coba lagi dengan bahasa yang lain`
         )
         .then(msg => msg.delete({ timeout: 6000 }));
 
@@ -58,7 +58,7 @@ exports.run = async (client, msg, args, color) => {
     let langs = id.results.map(x => x.language == lang.toLowerCase() && x.id);
     if (langs.every((val, i, arr) => val === arr[0]))
       return msg.channel
-        .send(`No book found with language **${lang}**, please try again or try using another language`)
+        .send(`Tidak ditemukan buku dengan bahasa **${lang}**, Coba lagi dengan bahasa yang lain`)
         .then(msg => msg.delete({ timeout: 6000 }));
     
     let query = id.results.find(x => x.language == lang.toLowerCase()).id;
@@ -75,7 +75,7 @@ exports.conf = {
 
 exports.help = {
   name: "parody",
-  description: "Get doujin by parody you provided",
+  description: "Mendapatkan doujin dengan parody yang kamu masukkan",
   usage: [
     "parody <Doujin Parody>",
     'parody "alice in wonderlan"',

@@ -5,7 +5,7 @@ let api = new nHentaiAPI();
 exports.run = async (client, msg, args, color) => {
   if (!msg.channel.nsfw)
     return msg.channel
-      .send(`NSFW channel please.`)
+      .send(`NSFW channel pliss.`)
       .then(msg => msg.delete({ timeout: 5000 }));
 
   // let patt = /^\d+$/;
@@ -22,7 +22,7 @@ exports.run = async (client, msg, args, color) => {
   }
   if (!client.config.LANG.includes(lang))
     return msg.channel
-      .send("Available langauge is `English`, `Japanese` & `Chinese`")
+      .send("Bahasa yang tersedia adalah `English`, `Japanese` & `Chinese`")
       .then(msg => msg.delete({ timeout: 5000 }));
 
   let numPages = await api.search(lang);
@@ -40,6 +40,6 @@ exports.conf = {
 exports.help = {
   name: "language",
   description:
-    "Search random nHentai manga from language. You can use alias language\nExample: en, ch, or jp.",
+    "Mencari random nHentai manga dari bahasa. Kamu juga dapat menggunakan alias\nContoh: en, ch, or jp.",
   usage: "language"
 };

@@ -20,7 +20,7 @@ module.exports = async (client, msg) => {
     msg.content.toLowerCase() === `<@${client.user.id}>` ||
     msg.content.toLowerCase() === `<@!${client.user.id}>`
   ) {
-    msg.channel.send(`My prefix: \`${prefix}\`\nExample: \`${prefix} random\``);
+    msg.channel.send(`Prefix ku: \`${prefix}\`\nContoh: \`${prefix} random\``);
   }
 
   if (/(https:\/\/)?(nhentai)\.(net)\/g\/[\d]+\/?/g.test(msg))
@@ -38,16 +38,16 @@ module.exports = async (client, msg) => {
   let member = msg.member;
   let now = Date.now();
   let timeStamp = cooldowns.get(cmd.help.name) || new Collection();
-  let cool = cmd.conf.cooldown || 5;
+  let cool = cmd.conf.cooldown || 3;
   let userCool = timeStamp.get(msg.author.id) || 0;
   let estimated = userCool + cool * 1000 - now;
 
   if (userCool && estimated > 0) {
     return msg.channel
       .send(
-        `**${member.user.username}**, you have to wait **${(
+        `**${member.user.username}**, kamu perlu menunggu **${(
           estimated / 1000
-        ).toFixed()}s** before use the same command`
+        ).toFixed()}s** sebelum menggunakan perintah yang sama`
       )
       .then(msg => msg.delete({ timeout: estimated }));
   }

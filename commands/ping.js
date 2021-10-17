@@ -22,6 +22,6 @@ exports.conf = {
 
 exports.help = {
   name: "ping",
-  description: "Ping the bot to see if there are latecny issues.",
+  description: "Ping bot untuk mengetahui jika ada masalah latency.",
   usage: "{prefix}ping"
 };

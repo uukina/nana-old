@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 exports.run = async (client, msg, args, color) => {
   if (!msg.channel.nsfw)
     return msg.channel
-      .send(`NSFW channel please.`)
+      .send(`NSFW channel pliss.`)
       .then(msg => msg.delete({ timeout: 5000 }));
   let res = await client.embeds.getById(args[0]);
   let type = args[1];

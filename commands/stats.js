@@ -27,6 +27,6 @@ exports.conf = {
 
 exports.help = {
   name: "stats",
-  description: "Show bot status",
+  description: "Menampilkan status bot",
   usage: "stats"
 };

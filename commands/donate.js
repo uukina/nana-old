@@ -7,9 +7,9 @@ exports.run = async (client, msg, args, color) => {
   let embed = new Discord.MessageEmbed()
     .setColor(color)
     .setDescription(
-      `**${msg.member.user.tag}** Welcome to donation page, you can support my creator on [Arxist](https://arxist.com/tip/masami) or [Patreon](https://patreon.com/masami) or you can send a message to ${app.owner.tag}.\n\n**Thank You**`
+      `**${msg.member.user.tag}** Selamat datang di halaman donasi, kamu dapat berdonasi di [Saweria](https://saweria.co/doujindesu) atau kamu dapat mengirim pesan ke owner bot${app.owner.tag}.\n\n**Thank You**`
     )
-    .setFooter(`© Nana | ${pkg.version}`);
+    .setFooter(`© UukxLena | ${pkg.version}`);
   msg.channel.send(embed);
 };
 
@@ -19,6 +19,6 @@ exports.conf = {
 
 exports.help = {
   name: "donate",
-  description: "Help my creator to buy me a VPS",
+  description: "Bantu owner bot beli rokok",
   usage: "donate"
 };

@@ -4,12 +4,12 @@ let api = new nHentaiAPI();
 exports.run = async (client, msg, args, color) => {
   if (!msg.channel.nsfw)
     return msg.channel
-      .send(`NSFW channel please.`)
+      .send(`NSFW channel pliss.`)
       .then(msg => msg.delete({ timeout: 5000 }));
   if (!args[0])
     return msg.channel
       .send(
-        `the command you are using is incorrect\nExample: \`nh tag <Tag> [language]\``
+        `Perintah yang gunakan salah\nContoh: \`dd tag <Tag> [language]\``
       )
       .then(msg => msg.delete({ timeout: 10000 }));
   let nick =
@@ -31,18 +31,18 @@ exports.run = async (client, msg, args, color) => {
   }
   if (!client.config.LANG.includes(lang.toLowerCase()))
     return msg.channel
-      .send("Available langauge is `English`, `Japanese` & `Chinese`")
+      .send("Bahasa yang tersedia adalah `English`, `Japanese` & `Chinese`")
       .then(msg => msg.delete({ timeout: 5000 }));
 
   let numPages = await api.tag(tag);
   if (!numPages.results || numPages.results.length == 0)
-    return msg.channel.send(`No doujin found with tag \`${tag}\``);
+    return msg.channel.send(`Tidak ditemukan doujin dengan tag \`${tag}\``);
   if (numPages.num_pages == 1) {
     let query = numPages.results.filter(x => x.language == lang.toLowerCase());
     if (query.length == 0)
       return msg.channel
         .send(
-          `No book found with language **${lang}**, please try using another language!`
+          `Tidak ditemukan buku dengan bahasa **${lang}**, Coba lagi dengan bahasa yang lain`
         )
         .then(msg => msg.delete({ timeout: 6000 }));
 
@@ -55,7 +55,7 @@ exports.run = async (client, msg, args, color) => {
     let langs = id.results.map(x => x.language == lang.toLowerCase() && x.id);
     if (langs.every((val, i, arr) => val === arr[0]))
       return msg.channel
-        .send(`No book found with language **${lang}**, please try again or try using another language`)
+        .send(`Tidak ditemukan buku dengan bahasa **${lang}**, Coba lagi dengan bahasa yang lain`)
         .then(msg => msg.delete({ timeout: 6000 }));
     
     let query = id.results.find(x => x.language == lang.toLowerCase()).id;
@@ -72,6 +72,6 @@ exports.conf = {
 
 exports.help = {
   name: "tag",
-  description: "Get doujin by tag you provided",
+  description: "Mendapatkan doujin dengan tag you provided",
   usage: ["tag <Doujin Tag>", "tag Milf", "tag Yaoi <english/japanese/chinese>"]
 };

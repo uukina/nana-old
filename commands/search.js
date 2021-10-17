@@ -4,12 +4,12 @@ let api = new nHentaiAPI();
 exports.run = async (client, msg, args, color) => {
   if (!msg.channel.nsfw)
     return msg.channel
-      .send(`NSFW channel please.`)
+      .send(`NSFW channel pliss.`)
       .then(msg => msg.delete({ timeout: 5000 }));
   if (!args[0])
     return msg.channel
       .send(
-        `the command you are using is incorrect\nExample: \`nh search <Query> [language]\``
+        `Perintah yang kamu gunakan salah\nContoh: \`dd search <Query> [language]\``
       )
       .then(msg => msg.delete({ timeout: 10000 }));
   let nick =
@@ -22,7 +22,7 @@ exports.run = async (client, msg, args, color) => {
   let patt = /^\d+$/;
   if (patt.test(search))
     return msg.channel.send(
-      `You can use \`nh read ${search}\` to search with ID`
+      `Kamu dapat menggunakan \`dd read ${search}\` Untuk mencari dengan ID`
     );
 
   let lang = input[1];
@@ -36,13 +36,13 @@ exports.run = async (client, msg, args, color) => {
   }
   if (!client.config.LANG.includes(lang.toLowerCase()))
     return msg.channel
-      .send("Available langauge is `English`, `Japanese` & `Chinese`")
+      .send("Bahasa yang tersedia adalah `English`, `Japanese` & `Chinese`")
       .then(msg => msg.delete({ timeout: 5000 }));
 
   let numPages = await api.search(search);
   // console.log(numPages);
   if (!numPages.results || numPages.results.length == 0)
-    return msg.channel.send(`No doujin found with query \`${search}\``);
+    return msg.channel.send(`Tidak ditemukan doujin dengan kueri \`${search}\``);
   
   // if total pages is only one, no need to use api again
   if (numPages.num_pages == 1) {
@@ -50,7 +50,7 @@ exports.run = async (client, msg, args, color) => {
     if (query.length == 0)
       return msg.channel
         .send(
-          `No book found with language **${lang}**, please try using another language!`
+          `Tidak ditemukan buku dengan bahasa **${lang}**, Coba lagi dengan bahasa yang lain`
         )
         .then(msg => msg.delete({ timeout: 6000 }));
     
@@ -66,7 +66,7 @@ exports.run = async (client, msg, args, color) => {
     let langs = id.results.map(x => x.language == lang.toLowerCase() && x.id);
     if (langs.every((val, i, arr) => val === arr[0]))
       return msg.channel
-        .send(`No book found with language **${lang}**, please try again or try using another language`)
+        .send(`Tidak ditemukan buku dengan bahasa **${lang}**, Coba lagi dengan bahasa yang lain`)
         .then(msg => msg.delete({ timeout: 6000 }));
     
     let query = id.results.find(x => x.language == lang.toLowerCase()).id;
@@ -83,7 +83,7 @@ exports.conf = {
 
 exports.help = {
   name: "search",
-  description: "Search nHentai site",
+  description: "Mencari di web nHentai",
   usage: [
     "search <query>",
     "search Milf",
